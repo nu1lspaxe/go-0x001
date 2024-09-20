@@ -4,18 +4,18 @@
 - [mockery](https://github.com/vektra/mockery)
   - Generate mock objects based on interface
   - Run the command in `server/domain` and the result is generated in `server/domain/mocks`
-  ```bash=
+  ```bash
   mockery --all --keeptree
   ```
 - [swagger](https://github.com/swaggo/swag)
   - Run the command in `server` and the result is generated in `server/docs`
-  ```bash=
+  ```bash
   swag init -g cmd/main.go
   # update swagger just run again
   ```
   - `server/docs` contains: `docs.go`, `swagger.json`, `swagger.yaml`
   - Import packages and set router to apply swagger api
-  ```go=
+  ```go
   import (
     swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -27,7 +27,7 @@
   ```
 
 ## Test
-```bash=
+```bash
 # Coverage test
 go test -coverprofile cover.out ./...
 # Show in browser
