@@ -19,5 +19,6 @@ services:
     restart: always
     volumes:
       - ./server/initdb.sh:/docker-entrypoint-initdb.d/init.sh
-    environment:
-      - POSTGRES_PASSWORD=postgres
+    # undo comment
+    # environment:
+    #   - POSTGRES_PASSWORD=postgres
