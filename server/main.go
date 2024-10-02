@@ -1,9 +1,9 @@
 package main
 
 import (
-	"go_0x001/server/swagger"
 	"log"
 	"net/http"
+	"server/swagger"
 )
 
 func main() {

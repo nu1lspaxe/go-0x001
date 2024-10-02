@@ -2,6 +2,7 @@ package grpc
 
 import (
 	"context"
+	"time"
 
 	"server/domain"
 	pb "server/proto"
@@ -10,29 +11,27 @@ import (
 	grpcLib "google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-
-	_ "server/docs"
 )
 
+// DigimonHandler ...
 type DigimonHandler struct {
 	DigimonServ domain.DigimonService
 	DietServ    domain.DietService
+	WeatherServ domain.WeatherService
 	pb.UnimplementedDigimonServer
 }
 
-func NewDigimonHandler(s *grpcLib.Server, digimonServ domain.DigimonService, dietServ domain.DietService) {
+// NewDigimonHandler ...
+func NewDigimonHandler(s *grpcLib.Server, digimonServ domain.DigimonService, dietServ domain.DietService, weatherServ domain.WeatherService) {
 	handler := &DigimonHandler{
 		DigimonServ: digimonServ,
 		DietServ:    dietServ,
+		WeatherServ: weatherServ,
 	}
 
 	pb.RegisterDigimonServer(s, handler)
 }
 
-// Create godoc
-//
-//	@Summary		Create a Digimon
-//	@Description	create a digimon
 func (d *DigimonHandler) Create(ctx context.Context, req *pb.CreateRequest) (*pb.CreateResponse, error) {
 	digimon := domain.Digimon{
 		Name: req.GetName(),
@@ -49,18 +48,43 @@ func (d *DigimonHandler) Create(ctx context.Context, req *pb.CreateRequest) (*pb
 	}, nil
 }
 
-func (d *DigimonHandler) Query(ctx context.Context, req *pb.QueryRequest) (*pb.QueryResponse, error) {
-	digimon, err := d.DigimonServ.GetById(ctx, req.GetId())
+func (d *DigimonHandler) QueryStream(req *pb.QueryRequest, srv pb.Digimon_QueryStreamServer) error {
+	weatherClient, err := d.WeatherServ.GetStreamByLocation(context.Background(), "A")
 	if err != nil {
 		logrus.Error(err)
-		return nil, status.Errorf(codes.Internal, "Internal error. Query digimon error")
+		return err
 	}
 
-	return &pb.QueryResponse{
-		Id:     digimon.Id,
-		Name:   digimon.Name,
-		Status: digimon.Status,
-	}, nil
+	for {
+		if err := weatherClient.Send(&domain.Weather{
+			Location: "A",
+		}); err != nil {
+			logrus.Error(err)
+			return err
+		}
+
+		time.Sleep(time.Duration(5) * time.Second)
+
+		weather, err := weatherClient.Recv()
+		if err != nil {
+			logrus.Error(err)
+			return err
+		}
+
+		digimon, err := d.DigimonServ.GetById(context.Background(), req.GetId())
+		if err != nil {
+			logrus.Error(err)
+			return err
+		}
+
+		srv.Send(&pb.QueryResponse{
+			Id:       digimon.Id,
+			Name:     digimon.Name,
+			Status:   digimon.Status,
+			Location: weather.Location,
+			Weather:  weather.Weather,
+		})
+	}
 }
 
 func (d *DigimonHandler) Foster(ctx context.Context, req *pb.FosterRequest) (*pb.FosterResponse, error) {

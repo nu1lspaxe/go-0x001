@@ -26,7 +26,7 @@ func TestGetById(t *testing.T) {
 			On("GetById", mock.Anything, mock.MatchedBy(func(value string) bool { return value == "e9addf2d-8739-427a-8b30-2383b9b045b1" })).
 			Return(&mockDiet, nil).Once()
 
-		u := _dietServ.NewDietUsecase(mockDietRepo)
+		u := _dietServ.NewDietService(mockDietRepo)
 		digimon, err := u.GetById(context.Background(), "e9addf2d-8739-427a-8b30-2383b9b045b1")
 
 		assert.NoError(t, err)
@@ -40,7 +40,7 @@ func TestGetById(t *testing.T) {
 			On("GetById", mock.Anything, mock.MatchedBy(func(value string) bool { return value == "e9addf2d-8739-427a-8b30-2383b9b045b1" })).
 			Return(nil, errors.New("Get error")).Once()
 
-		u := _dietServ.NewDietUsecase(mockDietRepo)
+		u := _dietServ.NewDietService(mockDietRepo)
 		aDigimon, err := u.GetById(context.Background(), "e9addf2d-8739-427a-8b30-2383b9b045b1")
 
 		assert.Error(t, err)
@@ -63,7 +63,7 @@ func TestStore(t *testing.T) {
 			On("Store", mock.Anything, mock.MatchedBy(func(d *domain.Diet) bool { return d == &mockDiet })).
 			Return(nil).Once()
 
-		u := _dietServ.NewDietUsecase(mockDietRepo)
+		u := _dietServ.NewDietService(mockDietRepo)
 		err := u.Store(context.Background(), &mockDiet)
 
 		assert.NoError(t, err)
@@ -75,7 +75,7 @@ func TestStore(t *testing.T) {
 			On("Store", mock.Anything, mock.MatchedBy(func(d *domain.Diet) bool { return d == &mockDiet })).
 			Return(errors.New("Get error")).Once()
 
-		u := _dietServ.NewDietUsecase(mockDietRepo)
+		u := _dietServ.NewDietService(mockDietRepo)
 		err := u.Store(context.Background(), &mockDiet)
 
 		assert.Error(t, err)

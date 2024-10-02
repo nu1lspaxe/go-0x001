@@ -1,41 +1,47 @@
 syntax = "proto3";
 
+package digimon;
+
 option go_package = "github.com/nu1lspaxe/go-0x001/server/proto;proto";
 
+
 service Digimon {
-    rpc Create (CreateRequest) returns (CreateResponse) {}
-    rpc Query (QueryRequest) returns (QueryResponse) {}
-    rpc Foster (FosterRequest) returns (FosterResponse) {}
+  rpc Create (CreateRequest) returns (CreateResponse) {}
+  rpc QueryStream (QueryRequest) returns (stream QueryResponse) {}
+  rpc Foster (FosterRequest) returns (FosterResponse) {}
 }
 
+
 message CreateRequest {
-    string name = 1;
+  string name = 1;
 }
-  
+
 message QueryRequest {
-    string id = 1;
+  string id = 1;
 }
 
 message FosterRequest {
-    message Food {
-      string name = 1;
-    }
-  
-    string id = 1;
-    Food food = 2;
+  message Food {
+    string name = 1;
+  }
+
+  string id = 1;
+  Food food = 2;
 }
 
 message CreateResponse {
-    string id = 1;
-    string name = 2;
-    string status = 3;
+  string id = 1;
+  string name = 2;
+  string status = 3;
 }
 
 message QueryResponse {
-    string id = 1;
-    string name = 2;
-    string status = 3;
+  string id = 1;
+  string name = 2;
+  string status = 3;
+  string location = 4;
+  string weather = 5;
 }
-  
+
 message FosterResponse {
 }

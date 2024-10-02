@@ -11,7 +11,7 @@ type dietService struct {
 	dietRepo domain.DietRepository
 }
 
-func NewDietUsecase(dietRepo domain.DietRepository) domain.DietService {
+func NewDietService(dietRepo domain.DietRepository) domain.DietService {
 	return &dietService{
 		dietRepo,
 	}

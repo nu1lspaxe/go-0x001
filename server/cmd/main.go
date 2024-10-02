@@ -8,14 +8,17 @@ import (
 	_dietRepo "server/diet/repository/postgresql"
 	_dietServ "server/diet/service"
 	_digimonHandlerGrpcDelivery "server/digimon/delivery/grpc"
-	_digimonHandlerHttpDelivery "server/digimon/delivery/http"
 	_digimonRepo "server/digimon/repository/postgresql"
 	_digimonServ "server/digimon/service"
+	_weatherRepo "server/weather/repository/grpc"
+	_weatherService "server/weather/service"
 
-	"github.com/gin-gonic/gin"
+	pb "server/proto/weather"
+
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 
 	_ "github.com/lib/pq"
 )
@@ -48,13 +51,14 @@ func init() {
 // @externalDocs.description	OpenAPI
 // @externalDocs.url			https://swagger.io/resources/open-api/
 func main() {
-	logrus.Info("Server started")
+	logrus.Info("GRPC Server started")
 
 	// RESTful
 	// restfulHost := viper.GetString("RESTFUL_HOST")
 	// restfulPort := viper.GetString("RESTFUL_PORT")
 
 	grpcPort := viper.GetString("GRPC_PORT")
+	grpcWeatherAddress := viper.GetString("GRPC_WEATHER_ADDRESS")
 
 	dbHost := viper.GetString("DB_HOST")
 	dbDatabase := viper.GetString("DB_DATABASE")
@@ -72,17 +76,24 @@ func main() {
 		logrus.Fatal(err)
 	}
 
-	r := gin.Default()
+	// r := gin.Default()
+	// _digimonHandlerHttpDelivery.NewDigimonHandler(r, digimonServ, dietServ)
+	// logrus.Fatal(r.Run(restfulHost + ":" + restfulPort))
 
+	conn, err := grpc.NewClient(grpcWeatherAddress, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil {
+		logrus.Fatalf("did not connect: %v", err)
+	}
+	defer conn.Close()
+	weatherClient := pb.NewWeatherClient(conn)
+
+	weatherRepo := _weatherRepo.NewgrpcWeatherRepository(weatherClient)
 	digimonRepo := _digimonRepo.NewPostgresqlDigimonRepository(db)
 	dietRepo := _dietRepo.NewPostgresqlDietRepository(db)
 
+	weatherServ := _weatherService.NewWeatherService(weatherRepo)
 	digimonServ := _digimonServ.NewDigimonService(digimonRepo)
-	dietServ := _dietServ.NewDietUsecase(dietRepo)
-
-	_digimonHandlerHttpDelivery.NewDigimonHandler(r, digimonServ, dietServ)
-
-	// logrus.Fatal(r.Run(restfulHost + ":" + restfulPort))
+	dietServ := _dietServ.NewDietService(dietRepo)
 
 	lis, err := net.Listen("tcp", ":"+grpcPort)
 	if err != nil {
@@ -90,7 +101,7 @@ func main() {
 	}
 	s := grpc.NewServer()
 
-	_digimonHandlerGrpcDelivery.NewDigimonHandler(s, digimonServ, dietServ)
+	_digimonHandlerGrpcDelivery.NewDigimonHandler(s, digimonServ, dietServ, weatherServ)
 
 	logrus.Fatal(s.Serve(lis))
 }
