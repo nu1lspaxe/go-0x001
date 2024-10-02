@@ -2,9 +2,9 @@ package postgresql_test
 
 import (
 	"fmt"
-	dietPostgresqlRepo "go_0x001/server/diet/repository/postgresql"
-	"go_0x001/server/domain"
 	"reflect"
+	dietPostgresqlRepo "server/diet/repository/postgresql"
+	"server/domain"
 	"testing"
 
 	"github.com/DATA-DOG/go-sqlmock"

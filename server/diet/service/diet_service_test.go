@@ -3,10 +3,10 @@ package service_test
 import (
 	"context"
 	"errors"
-	"go_0x001/server/domain"
-	"go_0x001/server/domain/mocks"
+	"server/domain"
+	"server/domain/mocks"
 
-	_dietServ "go_0x001/server/diet/service"
+	_dietServ "server/diet/service"
 	"testing"
 
 	"github.com/stretchr/testify/assert"

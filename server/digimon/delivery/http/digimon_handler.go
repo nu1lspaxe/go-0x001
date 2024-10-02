@@ -1,15 +1,15 @@
 package http
 
 import (
-	"go_0x001/server/domain"
-	"go_0x001/server/swagger"
+	"server/domain"
+	"server/swagger"
 
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 
-	_ "go_0x001/server/docs"
+	_ "server/docs"
 )
 
 type DigimonHandler struct {

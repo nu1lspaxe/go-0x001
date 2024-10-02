@@ -3,7 +3,7 @@ package postgresql
 import (
 	"context"
 	"database/sql"
-	"go_0x001/server/domain"
+	"server/domain"
 
 	"github.com/sirupsen/logrus"
 )

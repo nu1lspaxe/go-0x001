@@ -3,13 +3,13 @@ package http_test
 import (
 	"bytes"
 	"encoding/json"
-	"go_0x001/server/domain"
-	"go_0x001/server/domain/mocks"
 	"net/http"
 	"net/http/httptest"
+	"server/domain"
+	"server/domain/mocks"
 	"testing"
 
-	digimonHandlerHttpDelivery "go_0x001/server/digimon/delivery/http"
+	digimonHandlerHttpDelivery "server/digimon/delivery/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/mock"

@@ -3,9 +3,9 @@ package postgresql_test
 import (
 	"context"
 	"fmt"
-	digimonPostgresqlRepo "go_0x001/server/digimon/repository/postgresql"
-	"go_0x001/server/domain"
 	"reflect"
+	digimonPostgresqlRepo "server/digimon/repository/postgresql"
+	"server/domain"
 	"testing"
 
 	"github.com/DATA-DOG/go-sqlmock"

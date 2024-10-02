@@ -3,9 +3,9 @@ package service_test
 import (
 	"context"
 	"errors"
-	_digimonServ "go_0x001/server/digimon/service"
-	"go_0x001/server/domain"
-	"go_0x001/server/domain/mocks"
+	_digimonServ "server/digimon/service"
+	"server/domain"
+	"server/domain/mocks"
 	"testing"
 
 	"github.com/stretchr/testify/assert"

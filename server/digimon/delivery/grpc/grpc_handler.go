@@ -3,8 +3,8 @@ package grpc
 import (
 	"context"
 
-	"go_0x001/server/domain"
-	pb "go_0x001/server/proto"
+	"server/domain"
+	pb "server/proto"
 
 	"github.com/sirupsen/logrus"
 	grpcLib "google.golang.org/grpc"

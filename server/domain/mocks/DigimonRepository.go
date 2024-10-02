@@ -4,7 +4,7 @@ package mocks
 
 import (
 	context "context"
-	domain "go_0x001/server/domain"
+	domain "server/domain"
 
 	mock "github.com/stretchr/testify/mock"
 )

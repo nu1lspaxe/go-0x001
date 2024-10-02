@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"net"
 
-	_dietRepo "go_0x001/server/diet/repository/postgresql"
-	_dietServ "go_0x001/server/diet/service"
-	_digimonHandlerGrpcDelivery "go_0x001/server/digimon/delivery/grpc"
-	_digimonHandlerHttpDelivery "go_0x001/server/digimon/delivery/http"
-	_digimonRepo "go_0x001/server/digimon/repository/postgresql"
-	_digimonServ "go_0x001/server/digimon/service"
+	_dietRepo "server/diet/repository/postgresql"
+	_dietServ "server/diet/service"
+	_digimonHandlerGrpcDelivery "server/digimon/delivery/grpc"
+	_digimonHandlerHttpDelivery "server/digimon/delivery/http"
+	_digimonRepo "server/digimon/repository/postgresql"
+	_digimonServ "server/digimon/service"
 
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"

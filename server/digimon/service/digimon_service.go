@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 	"errors"
-	"go_0x001/server/domain"
+	"server/domain"
 
 	"github.com/gofrs/uuid"
 	"github.com/sirupsen/logrus"

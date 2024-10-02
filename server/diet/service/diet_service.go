@@ -2,7 +2,7 @@ package service
 
 import (
 	"context"
-	"go_0x001/server/domain"
+	"server/domain"
 
 	"github.com/sirupsen/logrus"
 )
