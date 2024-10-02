@@ -10,6 +10,8 @@ import (
 	grpcLib "google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+
+	_ "server/docs"
 )
 
 type DigimonHandler struct {
@@ -27,6 +29,10 @@ func NewDigimonHandler(s *grpcLib.Server, digimonServ domain.DigimonService, die
 	pb.RegisterDigimonServer(s, handler)
 }
 
+// Create godoc
+//
+//	@Summary		Create a Digimon
+//	@Description	create a digimon
 func (d *DigimonHandler) Create(ctx context.Context, req *pb.CreateRequest) (*pb.CreateResponse, error) {
 	digimon := domain.Digimon{
 		Name: req.GetName(),

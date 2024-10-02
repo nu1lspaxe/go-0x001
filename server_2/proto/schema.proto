@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "github.com/nu1lspaxe/go-0x001/server_2/proto;proto";
+
+service Weather {
+  rpc Query (stream QueryRequest) returns (stream QueryResponse) {}
+}
+
+
+message QueryRequest {
+  string location = 1;
+}
+
+
+message QueryResponse {
+  enum Weather {
+    SUNNY = 0;
+    CLOUDY = 1;
+  }
+
+  string location = 1;
+  Weather weather = 2;
+}

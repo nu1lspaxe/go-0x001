@@ -15,7 +15,7 @@
         },
         "version": "1.0"
     },
-    "host": "localhost:5000",
+    "host": "localhost:6000",
     "basePath": "/api/v1",
     "paths": {
         "/api/v1/digimons/{digimonId}": {

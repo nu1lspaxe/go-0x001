@@ -40,7 +40,7 @@ func init() {
 //	@license.name	Apache 2.0
 //	@license.url	http://www.apache.org/licenses/LICENSE-2.0.html
 
-//	@host		localhost:5000
+//	@host		localhost:6000
 //	@BasePath	/api/v1
 
 //	@securityDefinitions.basic	BasicAuth
@@ -48,7 +48,7 @@ func init() {
 // @externalDocs.description	OpenAPI
 // @externalDocs.url			https://swagger.io/resources/open-api/
 func main() {
-	logrus.Info("HTTP server started")
+	logrus.Info("Server started")
 
 	// RESTful
 	// restfulHost := viper.GetString("RESTFUL_HOST")
