@@ -1,5 +1,10 @@
 # go-0x001
 
+## Set up
+Set up the setting in the following files :
+1. `docker-compose-tmp.yml` to `docker-compose.yml`
+2. `server/.env.tmp` to `server/.env`
+
 ## Tool
 - [mockery](https://github.com/vektra/mockery)
   - Generate mock objects based on interface
