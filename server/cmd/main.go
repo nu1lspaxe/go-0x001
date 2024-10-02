@@ -3,9 +3,11 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"net"
 
 	_dietRepo "go_0x001/server/diet/repository/postgresql"
 	_dietServ "go_0x001/server/diet/service"
+	_digimonHandlerGrpcDelivery "go_0x001/server/digimon/delivery/grpc"
 	_digimonHandlerHttpDelivery "go_0x001/server/digimon/delivery/http"
 	_digimonRepo "go_0x001/server/digimon/repository/postgresql"
 	_digimonServ "go_0x001/server/digimon/service"
@@ -13,6 +15,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
+	"google.golang.org/grpc"
 
 	_ "github.com/lib/pq"
 )
@@ -47,8 +50,12 @@ func init() {
 func main() {
 	logrus.Info("HTTP server started")
 
-	restfulHost := viper.GetString("RESTFUL_HOST")
-	restfulPort := viper.GetString("RESTFUL_PORT")
+	// RESTful
+	// restfulHost := viper.GetString("RESTFUL_HOST")
+	// restfulPort := viper.GetString("RESTFUL_PORT")
+
+	grpcPort := viper.GetString("GRPC_PORT")
+
 	dbHost := viper.GetString("DB_HOST")
 	dbDatabase := viper.GetString("DB_DATABASE")
 	dbUser := viper.GetString("DB_USER")
@@ -75,5 +82,15 @@ func main() {
 
 	_digimonHandlerHttpDelivery.NewDigimonHandler(r, digimonServ, dietServ)
 
-	logrus.Fatal(r.Run(restfulHost + ":" + restfulPort))
+	// logrus.Fatal(r.Run(restfulHost + ":" + restfulPort))
+
+	lis, err := net.Listen("tcp", ":"+grpcPort)
+	if err != nil {
+		logrus.Fatal(err)
+	}
+	s := grpc.NewServer()
+
+	_digimonHandlerGrpcDelivery.NewDigimonHandler(s, digimonServ, dietServ)
+
+	logrus.Fatal(s.Serve(lis))
 }
