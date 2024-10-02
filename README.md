@@ -1,5 +1,14 @@
 # go-0x001
 
+## Set up
+1. Specify the `.env` file, you can modify the template `.env.tmp` according to your needs.
+2. The main file is stored in `server/cmd/main.go`, run it in any way you like.
+
+## API Protocol
+This repository implements these two transfer protocols:
+- REST
+- gRPC
+
 ## Tool
 - [mockery](https://github.com/vektra/mockery)
   - Generate mock objects based on interface
