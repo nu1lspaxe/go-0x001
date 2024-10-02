@@ -24,3 +24,6 @@ go.work.sum
 # env file
 .env
 *.env
+
+# docker file
+docker-compose.yml
