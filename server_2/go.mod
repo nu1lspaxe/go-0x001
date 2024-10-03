@@ -1,6 +1,6 @@
-module server_2
+module github.com/nu1lspaxe/go-0x001/server_2
 
-go 1.22.6
+go 1.23.2
 
 require github.com/sirupsen/logrus v1.9.3
 

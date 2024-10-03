@@ -6,7 +6,7 @@ import (
 	"math/rand"
 	"time"
 
-	"server_2/domain"
+	"github.com/nu1lspaxe/go-0x001/server_2/domain"
 )
 
 type fakeWeatherRepository struct {

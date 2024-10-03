@@ -2,7 +2,8 @@ package service
 
 import (
 	"context"
-	"server/domain"
+
+	"github.com/nu1lspaxe/go-0x001/server/domain"
 
 	"github.com/sirupsen/logrus"
 )
@@ -18,12 +19,12 @@ func NewDietService(dietRepo domain.DietRepository) domain.DietService {
 }
 
 func (ds *dietService) GetById(ctx context.Context, id string) (*domain.Diet, error) {
-	aDiet, err := ds.dietRepo.GetById(ctx, id)
+	diet, err := ds.dietRepo.GetById(ctx, id)
 	if err != nil {
 		logrus.Error(err)
 		return nil, err
 	}
-	return aDiet, nil
+	return diet, nil
 }
 
 func (ds *dietService) Store(ctx context.Context, d *domain.Diet) error {

@@ -3,10 +3,11 @@ package service_test
 import (
 	"context"
 	"errors"
-	_digimonServ "server/digimon/service"
-	"server/domain"
-	"server/domain/mocks"
 	"testing"
+
+	_digimonServ "github.com/nu1lspaxe/go-0x001/server/digimon/service"
+	"github.com/nu1lspaxe/go-0x001/server/domain"
+	"github.com/nu1lspaxe/go-0x001/server/domain/mocks"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"

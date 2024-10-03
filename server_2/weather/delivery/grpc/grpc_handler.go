@@ -5,8 +5,8 @@ import (
 	"errors"
 	"io"
 
-	"server_2/domain"
-	pb "server_2/proto"
+	"github.com/nu1lspaxe/go-0x001/server_2/domain"
+	pb "github.com/nu1lspaxe/go-0x001/server_2/proto/weather"
 
 	"github.com/sirupsen/logrus"
 	grpcLib "google.golang.org/grpc"

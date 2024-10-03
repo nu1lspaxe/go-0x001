@@ -6,7 +6,7 @@ import (
 	"io"
 	"log"
 
-	pb "server/proto"
+	pb "github.com/nu1lspaxe/go-0x001/server/proto/digimon"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"

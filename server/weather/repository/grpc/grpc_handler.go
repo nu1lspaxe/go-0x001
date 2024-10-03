@@ -3,8 +3,9 @@ package grpc
 import (
 	"context"
 
-	"server/domain"
-	pb "server/proto/weather"
+	"github.com/nu1lspaxe/go-0x001/server/domain"
+
+	pb "github.com/nu1lspaxe/go-0x001/server_2/proto/weather"
 
 	"github.com/sirupsen/logrus"
 )

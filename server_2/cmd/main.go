@@ -2,9 +2,10 @@ package main
 
 import (
 	"net"
-	_weatherHandlerGrpcDelivery "server_2/weather/delivery/grpc"
-	_weatherRepo "server_2/weather/repository/fake"
-	_weatherService "server_2/weather/service"
+
+	_weatherHandlerGrpcDelivery "github.com/nu1lspaxe/go-0x001/server_2/weather/delivery/grpc"
+	_weatherRepo "github.com/nu1lspaxe/go-0x001/server_2/weather/repository/fake"
+	_weatherService "github.com/nu1lspaxe/go-0x001/server_2/weather/service"
 
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"

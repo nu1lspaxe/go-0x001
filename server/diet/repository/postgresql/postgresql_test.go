@@ -3,9 +3,10 @@ package postgresql_test
 import (
 	"fmt"
 	"reflect"
-	dietPostgresqlRepo "server/diet/repository/postgresql"
-	"server/domain"
 	"testing"
+
+	dietPostgresqlRepo "github.com/nu1lspaxe/go-0x001/server/diet/repository/postgresql"
+	"github.com/nu1lspaxe/go-0x001/server/domain"
 
 	"github.com/DATA-DOG/go-sqlmock"
 	"golang.org/x/net/context"

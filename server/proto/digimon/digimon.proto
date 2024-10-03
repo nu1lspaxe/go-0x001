@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package digimon;
 
-option go_package = "github.com/nu1lspaxe/go-0x001/server/proto;proto";
+option go_package = "github.com/nu1lspaxe/go-0x001/server/proto/digimon;digimon";
 
 
 service Digimon {

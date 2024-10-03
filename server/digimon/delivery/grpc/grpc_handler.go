@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"server/domain"
-	pb "server/proto"
+	"github.com/nu1lspaxe/go-0x001/server/domain"
+	pb "github.com/nu1lspaxe/go-0x001/server/proto/digimon"
 
 	"github.com/sirupsen/logrus"
 	grpcLib "google.golang.org/grpc"

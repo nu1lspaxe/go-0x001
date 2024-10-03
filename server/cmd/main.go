@@ -5,15 +5,15 @@ import (
 	"fmt"
 	"net"
 
-	_dietRepo "server/diet/repository/postgresql"
-	_dietServ "server/diet/service"
-	_digimonHandlerGrpcDelivery "server/digimon/delivery/grpc"
-	_digimonRepo "server/digimon/repository/postgresql"
-	_digimonServ "server/digimon/service"
-	_weatherRepo "server/weather/repository/grpc"
-	_weatherService "server/weather/service"
+	_dietRepo "github.com/nu1lspaxe/go-0x001/server/diet/repository/postgresql"
+	_dietServ "github.com/nu1lspaxe/go-0x001/server/diet/service"
+	_digimonHandlerGrpcDelivery "github.com/nu1lspaxe/go-0x001/server/digimon/delivery/grpc"
+	_digimonRepo "github.com/nu1lspaxe/go-0x001/server/digimon/repository/postgresql"
+	_digimonServ "github.com/nu1lspaxe/go-0x001/server/digimon/service"
+	_weatherRepo "github.com/nu1lspaxe/go-0x001/server/weather/repository/grpc"
+	_weatherService "github.com/nu1lspaxe/go-0x001/server/weather/service"
 
-	pb "server/proto/weather"
+	pb "github.com/nu1lspaxe/go-0x001/server_2/proto/weather"
 
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"

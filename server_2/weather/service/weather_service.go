@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	"server_2/domain"
+	"github.com/nu1lspaxe/go-0x001/server_2/domain"
 
 	"github.com/sirupsen/logrus"
 )

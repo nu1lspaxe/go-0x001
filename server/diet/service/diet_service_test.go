@@ -3,11 +3,13 @@ package service_test
 import (
 	"context"
 	"errors"
-	"server/domain"
-	"server/domain/mocks"
 
-	_dietServ "server/diet/service"
+	"github.com/nu1lspaxe/go-0x001/server/domain"
+	"github.com/nu1lspaxe/go-0x001/server/domain/mocks"
+
 	"testing"
+
+	_dietServ "github.com/nu1lspaxe/go-0x001/server/diet/service"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"

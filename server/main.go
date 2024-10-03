@@ -3,7 +3,8 @@ package main
 import (
 	"log"
 	"net/http"
-	"server/swagger"
+
+	"github.com/nu1lspaxe/go-0x001/server/swagger"
 )
 
 func main() {

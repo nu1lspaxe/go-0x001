@@ -11,6 +11,10 @@ This repository implements these two transfer protocols:
 - gRPC
 
 ## Tool
+- protoc
+  ```bash
+  protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative <proto_file_name>.proto
+  ```
 - [mockery](https://github.com/vektra/mockery)
   - Generate mock objects based on interface
   - Run the command in `server/domain` and the result is generated in `server/domain/mocks`

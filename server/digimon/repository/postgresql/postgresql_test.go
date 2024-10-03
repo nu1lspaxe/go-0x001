@@ -4,9 +4,10 @@ import (
 	"context"
 	"fmt"
 	"reflect"
-	digimonPostgresqlRepo "server/digimon/repository/postgresql"
-	"server/domain"
 	"testing"
+
+	digimonPostgresqlRepo "github.com/nu1lspaxe/go-0x001/server/digimon/repository/postgresql"
+	"github.com/nu1lspaxe/go-0x001/server/domain"
 
 	"github.com/DATA-DOG/go-sqlmock"
 	"gotest.tools/assert"

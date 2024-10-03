@@ -5,11 +5,12 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
-	"server/domain"
-	"server/domain/mocks"
 	"testing"
 
-	digimonHandlerHttpDelivery "server/digimon/delivery/http"
+	"github.com/nu1lspaxe/go-0x001/server/domain"
+	"github.com/nu1lspaxe/go-0x001/server/domain/mocks"
+
+	digimonHandlerHttpDelivery "github.com/nu1lspaxe/go-0x001/server/digimon/delivery/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/mock"
