@@ -22,7 +22,7 @@ This repository implements gRPC protocol and make two services communicate: serv
 ## API Protocol
 This repository implements these two transfer protocols:
 - REST (branch: [digimon](https://github.com/nu1lspaxe/go-0x001/tree/digimon))
-- gRPC (main branch)
+- gRPC (branch: main)
 
 ## Tool
 - protoc
