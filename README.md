@@ -1,14 +1,28 @@
 # go-0x001
 
+## Introduction
+This repository implements gRPC protocol and make two services communicate: server (digimon), server_2 (weather).
+
 ## Set up
 1. Specify the `.env` file, you can modify the template `.env.tmp` according to your needs.
-2. Set postgresql password in `docker-compose-tmp.yml` file.
-3. The main file is stored in `cmd/main.go`, run it in any way you like.
+2. Copy `docker-compose-tmp.yml` file and rename it as `docker-compose.yml`, then set postgresql password.
+3. Test it!
+   ```bash
+   # start services
+   docker compose up -d
+   
+   # run the test
+   cd server/test
+   go run grpc.go
+   
+   # close services
+   docker compose down -v
+   ```
 
 ## API Protocol
 This repository implements these two transfer protocols:
-- REST
-- gRPC
+- REST (branch: [digimon](https://github.com/nu1lspaxe/go-0x001/tree/digimon))
+- gRPC (main branch)
 
 ## Tool
 - protoc
